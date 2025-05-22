@@ -22,19 +22,41 @@
   padding: 0;
 }
 
-body {
+body,
+html {
   font-family: 'Poppins', sans-serif;
   background-color: var(--bg-color);
   color: var(--text-color);
   line-height: 1.6;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  min-height: 100vh;
 }
 
+/* DARK MODE - volledige pagina */
+body.dark,
+html.dark {
+  background-color: #121212;
+  color: #f0f0f0;
+}
+
+/* App layout */
 .app {
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
+  background-color: var(--bg-color);
+  transition: var(--transition);
 }
 
+body.dark .app {
+  background-color: #121212;
+}
+
+body.dark .app * {
+  color: #f0f0f0;
+}
+
+/* Header */
 .app-header {
   text-align: center;
   margin-bottom: 40px;
@@ -84,8 +106,10 @@ body {
   opacity: 0.9;
 }
 
+/* Loading, Error, Empty */
 .loading,
-.error {
+.error,
+.empty {
   text-align: center;
   padding: 80px 20px;
   font-size: 1.2rem;
@@ -102,6 +126,154 @@ body {
   color: #e74c3c;
 }
 
+/* DARK MODE - contentsecties */
+body.dark .loading,
+body.dark .error,
+body.dark .empty {
+  background-color: #1e1e1e;
+  color: #f0f0f0;
+  box-shadow: none;
+}
+
+body.dark .app-header {
+  background-color: #1e1e1e;
+}
+
+body.dark .brand-logo {
+  background: none;
+  color: #ffffff;
+  -webkit-text-fill-color: initial;
+  -webkit-background-clip: initial;
+  text-shadow: none;
+}
+
+body.dark .brand-tagline {
+  color: #ccc;
+}
+
+/* Kaarten & dashboard */
+body.dark .card,
+body.dark .course-card,
+body.dark .dashboard {
+  background-color: #1e1e1e;
+  color: #f0f0f0;
+  box-shadow: none;
+  border: 1px solid #333;
+}
+
+/* Filter-tabs */
+body.dark .tab,
+body.dark .tab.active,
+body.dark .filter-tab,
+body.dark .filter-tab.active {
+  background-color: #1f1f1f;
+  color: #ffffff;
+  border-color: #333;
+}
+
+/* Sidebar Widgets */
+body.dark .sidebar,
+body.dark .stats,
+body.dark .info-panel,
+body.dark .course-summary,
+body.dark .popular-courses-widget,
+body.dark .statistics-widget {
+  background-color: #1e1e1e;
+  color: #f0f0f0;
+  box-shadow: none;
+  border: 1px solid #333;
+  border-radius: var(--border-radius);
+  padding: 20px;
+}
+
+/* Popular Courses */
+body.dark .popular-list {
+  list-style: none;
+  padding-left: 0;
+}
+
+body.dark .popular-item {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  color: #f0f0f0;
+}
+
+body.dark .popular-title {
+  font-weight: 500;
+}
+
+body.dark .popular-views {
+  color: #bbb;
+  font-size: 0.9rem;
+}
+
+/* Statistics container */
+body.dark .stats-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Statistische blokken als kaarten */
+body.dark .stat-item {
+  background-color: #1c1c1c;
+  border: 1px solid #333;
+  border-radius: var(--border-radius);
+  padding: 16px;
+  box-shadow: none;
+}
+
+/* Statistiek label en waarde */
+body.dark .stat-label {
+  font-size: 0.9rem;
+  color: #bbb;
+}
+
+body.dark .stat-value {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #f0f0f0;
+}
+
+/* Divider */
+body.dark hr,
+body.dark .divider {
+  border-color: #333;
+}
+
+/* Knoppen en inputs */
+body.dark .btn,
+body.dark .select {
+  background-color: #333;
+  color: #fff;
+  border: 1px solid #555;
+}
+
+body.dark .btn:hover {
+  background-color: #444;
+}
+
+/* Toggle Button */
+.dark-mode-toggle {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  padding: 0.5rem 1rem;
+  background-color: #444;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  z-index: 1000;
+  transition: background-color 0.3s;
+}
+
+.dark-mode-toggle:hover {
+  background-color: #666;
+}
+
+/* Accessibility */
 .visually-hidden {
   position: absolute;
   width: 1px;
@@ -125,11 +297,12 @@ body {
   }
 }
 
-/* Responsieve aanpassingen */
+/* Responsive */
 @media (max-width: 768px) {
   .brand-logo {
     font-size: 2.5rem;
   }
+
   .brand-tagline {
     font-size: 1rem;
   }

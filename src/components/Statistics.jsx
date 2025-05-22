@@ -3,18 +3,21 @@ const Statistics = ({ courses }) => {
 
   const getTotalMembers = () => {
     if (!isValidData) return 0;
-    return courses.reduce((total, course) => total + course.members, 0);
+    return courses.reduce((total, course) => total + (course.members || 0), 0);
   };
 
   const getTotalViews = () => {
     if (!isValidData) return 0;
-    return courses.reduce((total, course) => total + course.views, 0);
+    return courses.reduce((total, course) => total + (course.views || 0), 0);
   };
 
   const getAverageRating = () => {
-    const avg =
-      courses.reduce((total, course) => total + course.rating, 0) /
-      courses.length;
+    if (!isValidData) return 0;
+    const totalRating = courses.reduce(
+      (total, course) => total + (course.rating || 0),
+      0
+    );
+    const avg = totalRating / courses.length;
     return avg.toFixed(1);
   };
 

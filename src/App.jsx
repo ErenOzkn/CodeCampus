@@ -7,6 +7,20 @@ function App() {
   const [courseData, setCourseData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [darkMode, setDarkMode] = useState(false);
+
+  const toggleDarkMode = () => {
+    setDarkMode((prevMode) => !prevMode);
+  };
+
+  // Update body class when darkMode changes
+  useEffect(() => {
+    if (darkMode) {
+      document.body.classList.add('dark');
+    } else {
+      document.body.classList.remove('dark');
+    }
+  }, [darkMode]);
 
   useEffect(() => {
     const fetchData = () => {
@@ -23,17 +37,22 @@ function App() {
   }, []);
 
   return (
-    <main className='app'>
+    <main className={`app`}>
       <header className='app-header'>
         <div className='logo-container'>
           <h1 className='brand-logo'>CodeCampus</h1>
           <p className='brand-tagline'>Ontdek, Leer, Excelleer</p>
         </div>
+        <button className='dark-mode-toggle' onClick={toggleDarkMode}>
+          {darkMode ? 'Light Mode' : 'Dark Mode'}
+        </button>
       </header>
       {isLoading ? (
         <section className='loading'>Cursussen worden geladen...</section>
       ) : error ? (
         <section className='error'>{error}</section>
+      ) : courseData.length === 0 ? (
+        <section className='empty'>Geen cursussen beschikbaar.</section>
       ) : (
         <Dashboard courseData={courseData} />
       )}
