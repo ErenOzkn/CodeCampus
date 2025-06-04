@@ -2,19 +2,26 @@ import { useEffect, useState } from 'react';
 import Dashboard from './components/Dashboard';
 import { courses } from './data/coursesData.js';
 import './styles/App.css';
+import './styles/CourseCard.css';
 
 function App() {
   const [courseData, setCourseData] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [darkMode, setDarkMode] = useState(false);
+
+  // ✅ Dark mode uit localStorage bij het laden van de app
+  const [darkMode, setDarkMode] = useState(() => {
+    const storedMode = localStorage.getItem('darkMode');
+    return storedMode ? JSON.parse(storedMode) : false; // standaard: false
+  });
 
   const toggleDarkMode = () => {
     setDarkMode((prevMode) => !prevMode);
   };
 
-  // Update body class when darkMode changes
+  // ✅ Wanneer darkMode verandert, update localStorage én body class
   useEffect(() => {
+    localStorage.setItem('darkMode', JSON.stringify(darkMode));
     if (darkMode) {
       document.body.classList.add('dark');
     } else {
@@ -33,7 +40,7 @@ function App() {
       }
     };
 
-    setTimeout(fetchData, 1000);
+    setTimeout(fetchData, 1000); // Simuleert API-call
   }, []);
 
   return (
@@ -47,6 +54,7 @@ function App() {
           {darkMode ? 'Light Mode' : 'Dark Mode'}
         </button>
       </header>
+
       {isLoading ? (
         <section className='loading'>Cursussen worden geladen...</section>
       ) : error ? (

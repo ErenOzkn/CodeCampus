@@ -32,7 +32,6 @@ html {
   min-height: 100vh;
 }
 
-/* DARK MODE - volledige pagina */
 body.dark,
 html.dark {
   background-color: #121212;
@@ -106,7 +105,6 @@ body.dark .app * {
   opacity: 0.9;
 }
 
-/* Loading, Error, Empty */
 .loading,
 .error,
 .empty {
@@ -126,7 +124,6 @@ body.dark .app * {
   color: #e74c3c;
 }
 
-/* DARK MODE - contentsecties */
 body.dark .loading,
 body.dark .error,
 body.dark .empty {
@@ -151,7 +148,6 @@ body.dark .brand-tagline {
   color: #ccc;
 }
 
-/* Kaarten & dashboard */
 body.dark .card,
 body.dark .course-card,
 body.dark .dashboard {
@@ -161,7 +157,6 @@ body.dark .dashboard {
   border: 1px solid #333;
 }
 
-/* Filter-tabs */
 body.dark .tab,
 body.dark .tab.active,
 body.dark .filter-tab,
@@ -171,7 +166,6 @@ body.dark .filter-tab.active {
   border-color: #333;
 }
 
-/* Sidebar Widgets */
 body.dark .sidebar,
 body.dark .stats,
 body.dark .info-panel,
@@ -186,7 +180,6 @@ body.dark .statistics-widget {
   padding: 20px;
 }
 
-/* Popular Courses */
 body.dark .popular-list {
   list-style: none;
   padding-left: 0;
@@ -208,14 +201,12 @@ body.dark .popular-views {
   font-size: 0.9rem;
 }
 
-/* Statistics container */
 body.dark .stats-container {
   display: flex;
   flex-direction: column;
   gap: 16px;
 }
 
-/* Statistische blokken als kaarten */
 body.dark .stat-item {
   background-color: #1c1c1c;
   border: 1px solid #333;
@@ -224,7 +215,6 @@ body.dark .stat-item {
   box-shadow: none;
 }
 
-/* Statistiek label en waarde */
 body.dark .stat-label {
   font-size: 0.9rem;
   color: #bbb;
@@ -236,13 +226,11 @@ body.dark .stat-value {
   color: #f0f0f0;
 }
 
-/* Divider */
 body.dark hr,
 body.dark .divider {
   border-color: #333;
 }
 
-/* Knoppen en inputs */
 body.dark .btn,
 body.dark .select {
   background-color: #333;
@@ -254,7 +242,6 @@ body.dark .btn:hover {
   background-color: #444;
 }
 
-/* Toggle Button */
 .dark-mode-toggle {
   position: absolute;
   top: 1rem;
@@ -273,7 +260,6 @@ body.dark .btn:hover {
   background-color: #666;
 }
 
-/* Accessibility */
 .visually-hidden {
   position: absolute;
   width: 1px;
@@ -285,7 +271,6 @@ body.dark .btn:hover {
   border: 0;
 }
 
-/* Animaties */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -297,7 +282,6 @@ body.dark .btn:hover {
   }
 }
 
-/* Responsive */
 @media (max-width: 768px) {
   .brand-logo {
     font-size: 2.5rem;
@@ -307,3 +291,5 @@ body.dark .btn:hover {
     font-size: 1rem;
   }
 }
+
+

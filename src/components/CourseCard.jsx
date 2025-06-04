@@ -1,54 +1,44 @@
-import '../styles/CourseCard.css';
 
-const CourseCard = ({ course }) => {
-  if (!course)
-    return (
-      <article className='course-card empty'>
-        Geen cursus informatie beschikbaar
-      </article>
-    );
 
-const openCourseVideo = (url) => {
-  return () => {
-    console.log('Video URL:', url);
-    window.open(url, '_blank'); 
-  };
-
-};
-
+const CourseCard = ({ course, isFavorite, toggleFavorite }) => {
   return (
-    <article className='course-card'>
-      <figure className='course-image'>
-        <img src={course.imageUrl} alt={course.title} />
-      </figure>
-      <div className='course-content'>
+    <div className="course-card">
+      <div className="course-image">
+        <img
+          src={course.imageUrl || 'https://via.placeholder.com/320x180?text=Geen+Afbeelding'}
+          alt={course.title}
+        />
+        <button
+          className={`favorite-button ${isFavorite ? 'active' : ''}`}
+          onClick={() => toggleFavorite(course.id)}
+          aria-label="Markeer als favoriet"
+        >
+          {isFavorite ? '❤️' : '🤍'}
+        </button>
+      </div>
+
+      <div className="course-content">
         <h3>{course.title}</h3>
-        <p className='course-description'>{course.description}</p>
-        <dl className='course-details'>
-          <div>
-            <dt className='visually-hidden'>Niveau</dt>
-            <dd className='level'>Niveau: {course.level}</dd>
-          </div>
-          <div>
-            <dt className='visually-hidden'>Duur</dt>
-            <dd className='duration'>Duur: {course.duration}</dd>
-          </div>
-        </dl>
-        <footer className='course-stats'>
-          <span className='members'>{course.members} leden</span>
-          <span className='views'>{course.views} weergaven</span>
-          <span className='rating'>⭐ {course.rating}</span>
-        </footer>
-        <div className='course-actions'>
-          <button
-            className='course-button'
-            onClick={openCourseVideo(course.videoUrl)}
-          >
-            Bekijk Video
-          </button>
+        <p className="course-description">{course.description}</p>
+
+        <div className="course-details">
+          <div className="level course-badge">Niveau: {course.level}</div>
+          <div className="duration course-badge">Duur: {course.duration}</div>
+        </div>
+
+        <div className="course-stats">
+          <span className="members">{course.members} leden</span>
+          <span className="views">{course.views} weergaven</span>
+          <span className="rating">⭐ {course.rating}</span>
+        </div>
+
+        <div className="course-actions">
+          <a href={course.videoUrl} target="_blank" rel="noopener noreferrer">
+            <button className="course-button">Bekijk Video</button>
+          </a>
         </div>
       </div>
-    </article>
+    </div>
   );
 };
 
