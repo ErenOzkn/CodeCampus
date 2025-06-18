@@ -5,14 +5,42 @@ import PopularCourses from './PopularCourses';
 import Statistics from './Statistics';
 
 const Dashboard = ({ courseData }) => {
-  const [activeTab, setActiveTab] = useState('all');
+  const [activeTab, setActiveTab] = useState(() => {
+    return localStorage.getItem('activeTab') || 'all';
+  });
+
   const [favorites, setFavorites] = useState(() => {
     const stored = localStorage.getItem('favorites');
     return stored ? JSON.parse(stored) : [];
   });
-  const [searchTerm, setSearchTerm] = useState('');
-  const [selectedCategory, setSelectedCategory] = useState('');
-  const [sortOption, setSortOption] = useState('');
+
+  const [searchTerm, setSearchTerm] = useState(() => {
+    return localStorage.getItem('searchTerm') || '';
+  });
+
+  const [selectedCategory, setSelectedCategory] = useState(() => {
+    return localStorage.getItem('selectedCategory') || '';
+  });
+
+  const [sortOption, setSortOption] = useState(() => {
+    return localStorage.getItem('sortOption') || '';
+  });
+
+  useEffect(() => {
+    localStorage.setItem('activeTab', activeTab);
+  }, [activeTab]);
+
+  useEffect(() => {
+    localStorage.setItem('searchTerm', searchTerm);
+  }, [searchTerm]);
+
+  useEffect(() => {
+    localStorage.setItem('selectedCategory', selectedCategory);
+  }, [selectedCategory]);
+
+  useEffect(() => {
+    localStorage.setItem('sortOption', sortOption);
+  }, [sortOption]);
 
   useEffect(() => {
     localStorage.setItem('favorites', JSON.stringify(favorites));
@@ -131,13 +159,13 @@ const Dashboard = ({ courseData }) => {
       <div className="dashboard-content">
         <section className="main-content">
           <h2>
-            {{
+            {({
               all: 'Alle Cursussen',
               beginner: 'Cursussen voor Beginners',
               gevorderd: 'Gevorderde Cursussen',
               populair: 'Meest Bekeken Cursussen',
               favorieten: 'Je Favorieten',
-            }[activeTab]}
+            }[activeTab])}
           </h2>
           <CourseList
             courses={filteredCourses()}
