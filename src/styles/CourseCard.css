@@ -20,7 +20,6 @@
   }
 }
 
-/* ====== COURSE CARD ====== */
 .course-card {
   background-color: var(--card-bg);
   border-radius: var(--border-radius);
@@ -69,7 +68,6 @@
   transform: scale(1.05);
 }
 
-/* ====== FAVORITE BUTTON ====== */
 .favorite-button {
   position: absolute;
   top: 10px;
@@ -101,7 +99,6 @@ body.dark .favorite-button.active {
   color: #ff6b6b;
 }
 
-/* ====== CONTENT ====== */
 .course-content {
   padding: 20px;
   display: flex;
@@ -126,7 +123,6 @@ body.dark .favorite-button.active {
   flex-grow: 1;
 }
 
-/* ====== BADGES & STATS ====== */
 .course-details {
   display: flex;
   justify-content: space-between;
@@ -180,7 +176,6 @@ body.dark .course-stats {
   font-weight: 600;
 }
 
-/* ====== BUTTONS ====== */
 .course-actions {
   text-align: center;
   margin-top: auto;
@@ -292,13 +287,11 @@ body.dark .empty-list {
   background-color: #ddd;
 }
 
-/* ====== VIEWED STATE ====== */
 .course-card.viewed {
   border: 2px solid #4CAF50;
   background-color: #f0fff0;
 }
 
-/* ====== ANIMATIONS ====== */
 @keyframes fadeIn {
   from {
     background-color: rgba(30, 30, 30, 0);
